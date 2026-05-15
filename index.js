@@ -1386,7 +1386,7 @@ const HTML_PAGE = `
 
     <div class="container">
         <div class="header">
-            <h1 data-i18n="header.title"></h1>
+            <h1 data-i18n="header.title">ASMR APP</h1>
             <div class="features">
                 <div class="feature-item">
                     <span class="feature-icon">✨</span>
