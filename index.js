@@ -1178,66 +1178,6 @@ const HTML_PAGE = `
             }
         }
 
-        /* ========== 微信二维码弹窗 ========== */
-        .wechat-qrcode {
-            position: relative;
-            margin-right: 10px;
-        }
-
-        .wechat-btn {
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 8px;
-            border-radius: var(--radius-md);
-            transition: background 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-        }
-
-        .wechat-btn:hover {
-            background: rgba(0, 0, 0, 0.05);
-            color: #07c160;
-        }
-
-        .wechat-btn svg {
-            width: 22px;
-            height: 22px;
-        }
-
-        .qrcode-popup {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            margin-top: 8px;
-            background: var(--surface-color);
-            border-radius: var(--radius-lg);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-            padding: 16px;
-            display: none;
-            z-index: 1000;
-            text-align: center;
-        }
-
-        .qrcode-popup.show {
-            display: block;
-            animation: fadeIn 0.2s ease;
-        }
-
-        .qrcode-content img {
-            width: 150px;
-            height: 150px;
-            border-radius: var(--radius-sm);
-        }
-
-        .qrcode-content p {
-            margin-top: 10px;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
         /* ========== 暗色模式 ========== */
         @media (prefers-color-scheme: dark) {
             :root {
@@ -1422,21 +1362,6 @@ const HTML_PAGE = `
             </svg>
         </button>
 
-        <!-- 微信公众号二维码 -->
-        <div class="wechat-qrcode">
-            <button class="wechat-btn" id="wechatBtn" aria-label="Follow WeChat">
-                <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .139.045c.133 0 .241-.108.241-.243 0-.06-.023-.118-.038-.177l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088l-.405-.035zm-2.503 3.274c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.908 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.969-.982z"/>
-                </svg>
-            </button>
-            <div class="qrcode-popup" id="qrcodePopup">
-                <div class="qrcode-content">
-                    <img src="/images/qrcode.png" alt="WeChat QR Code">
-                    <p data-i18n="wechat.scanCode">Scan to follow</p>
-                </div>
-            </div>
-        </div>
-
         <!-- 语言切换器 -->
         <div class="language-switcher">
             <div class="language-btn" id="languageBtn">
@@ -1461,8 +1386,7 @@ const HTML_PAGE = `
 
     <div class="container">
         <div class="header">
-            <h1 data-i18n="header.title">VoiceCraft</h1>
-            <p class="subtitle" data-i18n="header.subtitle">AI-Powered Voice Processing Platform</p>
+            <h1 data-i18n="header.title"></h1>
             <div class="features">
                 <div class="feature-item">
                     <span class="feature-icon">✨</span>
@@ -1960,8 +1884,7 @@ const HTML_PAGE = `
               'lang.current': 'English',
               'lang.en': 'English',
               'lang.zh': '中文',
-              'header.title': 'VoiceCraft',
-              'header.subtitle': 'AI-Powered Voice Processing Platform',
+              'header.title': 'ASMR APP',
               'header.feature1': '90+ Voice Options',
               'header.feature2': 'Lightning Fast',
               'header.feature3': 'Completely Free',
@@ -2069,8 +1992,7 @@ const HTML_PAGE = `
               'lang.current': '中文',
               'lang.en': 'English',
               'lang.zh': '中文',
-              'header.title': 'VoiceCraft',
-              'header.subtitle': 'AI驱动的语音处理平台',
+              'header.title': 'ASMR APP',
               'header.feature1': '90+种语音选项',
               'header.feature2': '闪电般快速',
               'header.feature3': '完全免费',
