@@ -1200,10 +1200,6 @@ const HTML_PAGE = `
                 background: rgba(255, 255, 255, 0.1);
             }
 
-            .qrcode-popup {
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-            }
-
             .form-select,
             .form-textarea {
                 background-color: var(--surface-color);
@@ -1260,10 +1256,6 @@ const HTML_PAGE = `
 
         [data-theme="dark"] .wechat-btn:hover {
             background: rgba(255, 255, 255, 0.1);
-        }
-
-        [data-theme="dark"] .qrcode-popup {
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
         }
 
         [data-theme="dark"] .form-select,
@@ -1966,16 +1958,6 @@ const HTML_PAGE = `
               'result.placeholder': 'Transcription result will appear here...',
               'result.success': 'Generation successful!',
               'result.transcriptionSuccess': 'Transcription successful!',
-              'wechat.follow': 'Follow WeChat',
-              'wechat.scanCode': 'Scan to follow',
-              'promo.title': 'Generation successful! Like this tool?',
-              'promo.subtitle': 'Follow us for more AI tools and tech updates',
-              'promo.accountName': 'Follow our WeChat Account',
-              'promo.accountDesc': 'Get more practical AI tools, tutorials and exclusive resources',
-              'promo.feature1': 'Latest AI tool recommendations and tutorials',
-              'promo.feature2': 'Cutting-edge tech analysis and practical cases',
-              'promo.feature3': 'Exclusive resources and source code sharing',
-              'promo.feature4': 'Tech Q&A and community discussions',
               'voice.group.chinese': 'Chinese',
               'voice.group.english': 'English',
               'voice.group.japanese': 'Japanese',
@@ -2074,16 +2056,6 @@ const HTML_PAGE = `
               'result.placeholder': '转录结果将在这里显示...',
               'result.success': '生成成功！',
               'result.transcriptionSuccess': '转录成功！',
-              'wechat.follow': '关注公众号',
-              'wechat.scanCode': '扫码关注',
-              'promo.title': '生成成功！喜欢这个工具吗？',
-              'promo.subtitle': '关注我们获取更多AI工具和技术分享',
-              'promo.accountName': '关注「一只会飞的旺旺」公众号',
-              'promo.accountDesc': '获取更多实用的AI工具、技术教程和独家资源分享',
-              'promo.feature1': '最新AI工具推荐和使用教程',
-              'promo.feature2': '前沿技术解析和实战案例',
-              'promo.feature3': '独家资源和工具源码分享',
-              'promo.feature4': '技术问题答疑和交流社群',
               'voice.group.chinese': '中文',
               'voice.group.english': '英语',
               'voice.group.japanese': '日语',
@@ -2454,13 +2426,6 @@ const HTML_PAGE = `
               loading.style.display = 'none';
               success.style.display = 'block';
 
-              // 显示公众号推广组件
-              setTimeout(() => {
-                  const wechatPromotion = document.getElementById('wechatPromotion');
-                  wechatPromotion.style.display = 'block';
-                  wechatPromotion.classList.add('fade-in');
-              }, 1000);
-
           } catch (err) {
               loading.style.display = 'none';
               error.style.display = 'block';
@@ -2693,13 +2658,6 @@ const HTML_PAGE = `
               document.getElementById('transcriptionText').value = result.text || '';
               transcriptionLoading.style.display = 'none';
               transcriptionSuccess.style.display = 'block';
-
-              // 显示公众号推广组件
-              setTimeout(() => {
-                  const wechatPromotion = document.getElementById('wechatPromotion');
-                  wechatPromotion.style.display = 'block';
-                  wechatPromotion.classList.add('fade-in');
-              }, 1000);
 
           } catch (err) {
               transcriptionLoading.style.display = 'none';
