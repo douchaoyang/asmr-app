@@ -1498,22 +1498,22 @@ const HTML_PAGE = `
                             <select class="form-select" id="voice">
                                 <!-- 中文语音 Chinese -->
                                 <optgroup label="Chinese" data-i18n-label="voice.group.chinese">
-                                    <option value="zh-CN-XiaoxiaoNeural">晓晓 Xiaoxiao (女声·温柔)</option>
-                                    <option value="zh-CN-YunxiNeural">云希 Yunxi (男声·清朗)</option>
-                                    <option value="zh-CN-YunyangNeural">云扬 Yunyang (男声·阳光)</option>
-                                    <option value="zh-CN-XiaoyiNeural">晓伊 Xiaoyi (女声·甜美)</option>
-                                    <option value="zh-CN-YunjianNeural">云健 Yunjian (男声·稳重)</option>
                                     <option value="zh-CN-XiaochenNeural">晓辰 Xiaochen (女声·知性)</option>
+                                    <option value="zh-CN-XiaozhenNeural">晓甄 Xiaozhen (女声·端庄)</option>
+                                    <option value="zh-CN-XiaoxiaoNeural">晓晓 Xiaoxiao (女声·温柔)</option>
+                                    <option value="zh-CN-XiaoqiuNeural">晓秋 Xiaoqiu (女声·成熟)</option>
+                                    <option value="zh-CN-XiaoyiNeural">晓伊 Xiaoyi (女声·甜美)</option>
                                     <option value="zh-CN-XiaohanNeural">晓涵 Xiaohan (女声·优雅)</option>
                                     <option value="zh-CN-XiaomengNeural">晓梦 Xiaomeng (女声·梦幻)</option>
                                     <option value="zh-CN-XiaomoNeural">晓墨 Xiaomo (女声·文艺)</option>
-                                    <option value="zh-CN-XiaoqiuNeural">晓秋 Xiaoqiu (女声·成熟)</option>
                                     <option value="zh-CN-XiaoruiNeural">晓睿 Xiaorui (女声·智慧)</option>
                                     <option value="zh-CN-XiaoshuangNeural">晓双 Xiaoshuang (女声·活泼)</option>
                                     <option value="zh-CN-XiaoxuanNeural">晓萱 Xiaoxuan (女声·清新)</option>
                                     <option value="zh-CN-XiaoyanNeural">晓颜 Xiaoyan (女声·柔美)</option>
                                     <option value="zh-CN-XiaoyouNeural">晓悠 Xiaoyou (女声·悠扬)</option>
-                                    <option value="zh-CN-XiaozhenNeural">晓甄 Xiaozhen (女声·端庄)</option>
+                                    <option value="zh-CN-YunxiNeural">云希 Yunxi (男声·清朗)</option>
+                                    <option value="zh-CN-YunyangNeural">云扬 Yunyang (男声·阳光)</option>
+                                    <option value="zh-CN-YunjianNeural">云健 Yunjian (男声·稳重)</option>
                                     <option value="zh-CN-YunfengNeural">云枫 Yunfeng (男声·磁性)</option>
                                     <option value="zh-CN-YunhaoNeural">云皓 Yunhao (男声·豪迈)</option>
                                     <option value="zh-CN-YunxiaNeural">云夏 Yunxia (男声·热情)</option>
@@ -1651,7 +1651,7 @@ const HTML_PAGE = `
                                     <button type="button" class="preset-btn" data-target="speed" data-value="2.0" data-i18n-title="speed.veryFast" title="Very Fast">💨</button>
                                 </div>
                                 <input type="range" class="form-range" id="speed"
-                                       min="0.25" max="3.0" step="0.05" value="1.0">
+                                       min="0.25" max="3.0" step="0.05" value="0.9">
                                 <div class="range-labels">
                                     <span>0.25x</span>
                                     <span>1.0x</span>
@@ -2893,24 +2893,6 @@ const HTML_PAGE = `
           const themeToggle = document.getElementById('themeToggle');
           if (themeToggle) {
               themeToggle.addEventListener('click', toggleTheme);
-          }
-
-          // 微信二维码弹窗
-          const wechatBtn = document.getElementById('wechatBtn');
-          const qrcodePopup = document.getElementById('qrcodePopup');
-
-          if (wechatBtn && qrcodePopup) {
-              wechatBtn.addEventListener('click', function(e) {
-                  e.stopPropagation();
-                  qrcodePopup.classList.toggle('show');
-              });
-
-              // 点击外部关闭弹窗
-              document.addEventListener('click', function(e) {
-                  if (!qrcodePopup.contains(e.target) && e.target !== wechatBtn) {
-                      qrcodePopup.classList.remove('show');
-                  }
-              });
           }
       });    
     </script>
