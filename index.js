@@ -1708,7 +1708,7 @@ const HTML_PAGE = `
 
                     <div id="success" style="display: none;">
                         <audio id="audioPlayer" class="audio-player" controls></audio>
-                        <a id="downloadBtn" class="btn-secondary" download="speech.mp3">
+                        <a id="downloadBtn" class="btn-secondary" download="音声.mp3">
                             <span>📥</span>
                             <span data-i18n="btn.download">Download Audio</span>
                         </a>
