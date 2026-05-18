@@ -2485,9 +2485,6 @@ const HTML_PAGE = `
               mainContent.style.display = 'none';
               transcriptionContainer.style.display = 'block';
           }
-
-          // 隐藏推广组件
-          wechatPromotion.style.display = 'none';
       }
 
       // 初始化音频上传功能
