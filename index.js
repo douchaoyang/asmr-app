@@ -1736,7 +1736,7 @@ const HTML_PAGE = `
                                     </svg>
                                 </div>
                                 <p class="file-drop-text" data-i18n="file.audioDropText">Drag audio file here or click to select</p>
-                                <p class="file-drop-hint" data-i18n="file.audioDropHint">Supports mp3, wav, m4a, flac, aac, ogg, webm, amr, 3gp, max 10MB</p>
+                                <p class="file-drop-hint" data-i18n="file.audioDropHint">Supports mp3, wav, m4a, flac, aac, ogg, webm, amr, 3gp, max 50MB</p>
                             </div>
                             <input type="file" id="audioFileInput" accept=".mp3,.wav,.m4a,.flac,.aac,.ogg,.webm,.amr,.3gp,audio/*" style="display: none;">
                         </div>
@@ -1928,7 +1928,7 @@ const HTML_PAGE = `
               'error.noAudioFile': 'Please select an audio file to transcribe',
               'error.invalidFileType': 'Please select a txt file',
               'error.fileTooLarge': 'File size cannot exceed 500KB',
-              'error.audioFileTooLarge': 'Audio file size cannot exceed 10MB',
+              'error.audioFileTooLarge': 'Audio file size cannot exceed 50MB',
               'error.invalidAudioType': 'Please select an audio file (mp3, wav, m4a, flac, aac, ogg, webm, amr, 3gp)',
               'error.emptyTranscription': 'Transcription result is empty',
               'error.customTokenRequired': 'Please enter custom token',
@@ -1944,7 +1944,7 @@ const HTML_PAGE = `
               'file.dropHint': 'Supports txt format, max 500KB',
               'file.audioLabel': 'Upload Audio File',
               'file.audioDropText': 'Drag audio file here or click to select',
-              'file.audioDropHint': 'Supports mp3, wav, m4a, flac, aac, ogg, webm, amr, 3gp, max 10MB',
+              'file.audioDropHint': 'Supports mp3, wav, m4a, flac, aac, ogg, webm, amr, 3gp, max 50MB',
               'error.generateFailed': 'Generation failed',
               'error.transcribeFailed': 'Transcription failed',
               'error.requestTooLong': 'Error: Text too long, too many subrequests. Please shorten or split the text.',
@@ -2026,7 +2026,7 @@ const HTML_PAGE = `
               'error.noAudioFile': '请选择要转录的音频文件',
               'error.invalidFileType': '请选择txt格式的文本文件',
               'error.fileTooLarge': '文件大小不能超过500KB',
-              'error.audioFileTooLarge': '音频文件大小不能超过10MB',
+              'error.audioFileTooLarge': '音频文件大小不能超过50MB',
               'error.invalidAudioType': '请选择音频格式的文件（mp3、wav、m4a、flac、aac、ogg、webm、amr、3gp）',
               'error.emptyTranscription': '转录结果为空，无法转换为语音',
               'error.customTokenRequired': '请输入自定义Token',
@@ -2042,7 +2042,7 @@ const HTML_PAGE = `
               'file.dropHint': '支持txt格式，最大500KB',
               'file.audioLabel': '上传音频文件',
               'file.audioDropText': '拖拽音频文件到此处，或点击选择文件',
-              'file.audioDropHint': '支持mp3、wav、m4a、flac、aac、ogg、webm、amr、3gp格式，最大10MB',
+              'file.audioDropHint': '支持mp3、wav、m4a、flac、aac、ogg、webm、amr、3gp格式，最大50MB',
               'error.generateFailed': '生成失败',
               'error.transcribeFailed': '转录失败',
               'error.requestTooLong': '错误: 文本过长导致请求过多，请缩短文本内容或分段处理',
@@ -2554,8 +2554,8 @@ const HTML_PAGE = `
               return;
           }
 
-          // 验证文件大小（限制为10MB）
-          if (file.size > 10 * 1024 * 1024) {
+          // 验证文件大小（限制为50MB）
+          if (file.size > 50 * 1024 * 1024) {
               showToast(t('error.audioFileTooLarge'), 'error');
               return;
           }
