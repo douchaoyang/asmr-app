@@ -2902,7 +2902,7 @@ async function handleRequest(request) {
             "Content-Type": "application/json",
             ...makeCORSHeaders(),
           },
-        }
+        },
       );
     }
   }
@@ -2937,7 +2937,7 @@ async function handleRequest(request) {
         numPitch >= 0 ? `+${numPitch}Hz` : `${numPitch}Hz`,
         numVolume >= 0 ? `+${numVolume}%` : `${numVolume}%`,
         style,
-        "audio-24khz-48kbitrate-mono-mp3"
+        "audio-24khz-48kbitrate-mono-mp3",
       );
 
       return response;
@@ -2958,7 +2958,7 @@ async function handleRequest(request) {
             "Content-Type": "application/json",
             ...makeCORSHeaders(),
           },
-        }
+        },
       );
     }
   }
@@ -3036,7 +3036,7 @@ async function processBatchedAudioChunks(
   style,
   outputFormat,
   batchSize = 3,
-  delayMs = 1000
+  delayMs = 1000,
 ) {
   const audioChunks = [];
 
@@ -3055,14 +3055,14 @@ async function processBatchedAudioChunks(
           pitch,
           volume,
           style,
-          outputFormat
+          outputFormat,
         );
       } catch (error) {
         console.error(
           `处理音频块失败 (批次 ${Math.floor(i / batchSize) + 1}, 块 ${
             index + 1
           }):`,
-          error
+          error,
         );
         throw error;
       }
@@ -3092,7 +3092,7 @@ async function getVoice(
   pitch = "+0Hz",
   volume = "+0%",
   style = "general",
-  outputFormat = "audio-24khz-48kbitrate-mono-mp3"
+  outputFormat = "audio-24khz-48kbitrate-mono-mp3",
 ) {
   try {
     // 文本预处理
@@ -3110,7 +3110,7 @@ async function getVoice(
         pitch,
         volume,
         style,
-        outputFormat
+        outputFormat,
       );
       return new Response(audioBlob, {
         headers: {
@@ -3126,7 +3126,7 @@ async function getVoice(
     // 检查分块数量，防止超过CloudFlare限制
     if (chunks.length > 40) {
       throw new Error(
-        `文本过长，分块数量(${chunks.length})超过限制。请缩短文本或分批处理。`
+        `文本过长，分块数量(${chunks.length})超过限制。请缩短文本或分批处理。`,
       );
     }
 
@@ -3142,7 +3142,7 @@ async function getVoice(
       style,
       outputFormat,
       3, // 每批处理3个
-      800 // 批次间延迟800ms
+      800, // 批次间延迟800ms
     );
 
     // 将音频片段拼接起来
@@ -3170,7 +3170,7 @@ async function getVoice(
           "Content-Type": "application/json",
           ...makeCORSHeaders(),
         },
-      }
+      },
     );
   }
 }
@@ -3184,7 +3184,7 @@ async function getAudioChunk(
   volume,
   style,
   outputFormat = "audio-24khz-48kbitrate-mono-mp3",
-  maxRetries = 3
+  maxRetries = 3,
 ) {
   const retryDelay = 500; // 重试延迟500ms
 
@@ -3232,7 +3232,7 @@ async function getAudioChunk(
             console.log(
               `频率限制，第${attempt + 1}次重试，等待${
                 retryDelay * (attempt + 1)
-              }ms`
+              }ms`,
             );
             await delay(retryDelay * (attempt + 1));
             continue;
@@ -3244,13 +3244,13 @@ async function getAudioChunk(
             console.log(
               `服务器错误，第${attempt + 1}次重试，等待${
                 retryDelay * (attempt + 1)
-              }ms`
+              }ms`,
             );
             await delay(retryDelay * (attempt + 1));
             continue;
           }
           throw new Error(
-            `Edge TTS服务器错误: ${response.status} ${errorText}`
+            `Edge TTS服务器错误: ${response.status} ${errorText}`,
           );
         } else {
           // 客户端错误，不重试
@@ -3263,7 +3263,7 @@ async function getAudioChunk(
       if (attempt === maxRetries) {
         // 最后一次重试失败
         throw new Error(
-          `音频生成失败（已重试${maxRetries}次）: ${error.message}`
+          `音频生成失败（已重试${maxRetries}次）: ${error.message}`,
         );
       }
 
@@ -3275,7 +3275,7 @@ async function getAudioChunk(
         console.log(
           `网络错误，第${attempt + 1}次重试，等待${
             retryDelay * (attempt + 1)
-          }ms`
+          }ms`,
         );
         await delay(retryDelay * (attempt + 1));
         continue;
@@ -3390,12 +3390,12 @@ async function hmacSha256(key, data) {
     key,
     { name: "HMAC", hash: { name: "SHA-256" } },
     false,
-    ["sign"]
+    ["sign"],
   );
   const signature = await crypto.subtle.sign(
     "HMAC",
     cryptoKey,
-    new TextEncoder().encode(data)
+    new TextEncoder().encode(data),
   );
   return new Uint8Array(signature);
 }
@@ -3425,7 +3425,7 @@ async function sign(urlStr) {
   const bytesToSign =
     `MSTranslatorAndroidApp${encodedUrl}${formattedDate}${uuidStr}`.toLowerCase();
   const decode = await base64ToBytes(
-    "oik6PdDdMnOXemTbwvMn9de/h9lFnfBaCWbGMMZqqoSaQaqUOqjVGm5NqsmjcBI1x+sS9ugjB55HEJWRiFXYFw=="
+    "oik6PdDdMnOXemTbwvMn9de/h9lFnfBaCWbGMMZqqoSaQaqUOqjVGm5NqsmjcBI1x+sS9ugjB55HEJWRiFXYFw==",
   );
   const signData = await hmacSha256(decode, bytesToSign);
   const signBase64 = await bytesToBase64(signData);
@@ -3466,7 +3466,7 @@ async function handleFileUpload(request) {
             "Content-Type": "application/json",
             ...makeCORSHeaders(),
           },
-        }
+        },
       );
     }
 
@@ -3490,7 +3490,7 @@ async function handleFileUpload(request) {
             "Content-Type": "application/json",
             ...makeCORSHeaders(),
           },
-        }
+        },
       );
     }
 
@@ -3511,7 +3511,7 @@ async function handleFileUpload(request) {
             "Content-Type": "application/json",
             ...makeCORSHeaders(),
           },
-        }
+        },
       );
     }
 
@@ -3535,7 +3535,7 @@ async function handleFileUpload(request) {
             "Content-Type": "application/json",
             ...makeCORSHeaders(),
           },
-        }
+        },
       );
     }
 
@@ -3556,7 +3556,7 @@ async function handleFileUpload(request) {
             "Content-Type": "application/json",
             ...makeCORSHeaders(),
           },
-        }
+        },
       );
     }
 
@@ -3573,7 +3573,7 @@ async function handleFileUpload(request) {
       numPitch >= 0 ? `+${numPitch}Hz` : `${numPitch}Hz`,
       numVolume >= 0 ? `+${numVolume}%` : `${numVolume}%`,
       style,
-      "audio-24khz-48kbitrate-mono-mp3"
+      "audio-24khz-48kbitrate-mono-mp3",
     );
   } catch (error) {
     console.error("文件上传处理失败:", error);
@@ -3592,7 +3592,7 @@ async function handleFileUpload(request) {
           "Content-Type": "application/json",
           ...makeCORSHeaders(),
         },
-      }
+      },
     );
   }
 }
@@ -3617,7 +3617,7 @@ async function handleAudioTranscription(request) {
             "Content-Type": "application/json",
             ...makeCORSHeaders(),
           },
-        }
+        },
       );
     }
 
@@ -3640,7 +3640,7 @@ async function handleAudioTranscription(request) {
             "Content-Type": "application/json",
             ...makeCORSHeaders(),
           },
-        }
+        },
       );
     }
 
@@ -3666,16 +3666,16 @@ async function handleAudioTranscription(request) {
             "Content-Type": "application/json",
             ...makeCORSHeaders(),
           },
-        }
+        },
       );
     }
 
-    // 验证文件大小（限制为10MB）
-    if (audioFile.size > 10 * 1024 * 1024) {
+    // 验证文件大小（限制为50MB）
+    if (audioFile.size > 50 * 1024 * 1024) {
       return new Response(
         JSON.stringify({
           error: {
-            message: "音频文件大小不能超过10MB",
+            message: "音频文件大小不能超过50MB",
             type: "invalid_request_error",
             param: "file",
             code: "file_too_large",
@@ -3687,7 +3687,7 @@ async function handleAudioTranscription(request) {
             "Content-Type": "application/json",
             ...makeCORSHeaders(),
           },
-        }
+        },
       );
     }
 
@@ -3710,7 +3710,7 @@ async function handleAudioTranscription(request) {
         audioFile.type.includes(type) ||
         audioFile.name
           .toLowerCase()
-          .match(/\.(mp3|wav|m4a|flac|aac|ogg|webm|amr|3gp)$/i)
+          .match(/\.(mp3|wav|m4a|flac|aac|ogg|webm|amr|3gp)$/i),
     );
 
     if (!isValidType) {
@@ -3730,7 +3730,7 @@ async function handleAudioTranscription(request) {
             "Content-Type": "application/json",
             ...makeCORSHeaders(),
           },
-        }
+        },
       );
     }
 
@@ -3752,7 +3752,7 @@ async function handleAudioTranscription(request) {
           Authorization: `Bearer ${token}`,
         },
         body: apiFormData,
-      }
+      },
     );
 
     if (!apiResponse.ok) {
@@ -3784,7 +3784,7 @@ async function handleAudioTranscription(request) {
             "Content-Type": "application/json",
             ...makeCORSHeaders(),
           },
-        }
+        },
       );
     }
 
@@ -3815,7 +3815,7 @@ async function handleAudioTranscription(request) {
           "Content-Type": "application/json",
           ...makeCORSHeaders(),
         },
-      }
+      },
     );
   }
 }
