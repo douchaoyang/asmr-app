@@ -3733,7 +3733,7 @@ async function handleAudioTranscription(request) {
 
     // 使用默认token或用户提供的token
     const token =
-      customToken || "sk-wtldsvuprmwltxpbspbmawtolbacghzawnjhtlzlnujjkfhh";
+      customToken || "sk-uvofeopqrphxhjettygjrgasiaoepzoydhfelpxsnwgnpjhr";
 
     // 构建发送到硅基流动API的FormData
     const apiFormData = new FormData();
